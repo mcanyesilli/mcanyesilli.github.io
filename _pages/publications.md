@@ -5,12 +5,10 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if author.googlescholar %}
-  You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
-{% endif %}
+You can find my articles on <u><a href="https://scholar.google.com/citations?user=dx7stuoAAAAJ&hl=en">my Google Scholar profile</a>.</u>
 
-{% include base_path %}
+Journal Publications
+====================
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
++ <u><a href="https://doi.org/10.1016/j.cirpj.2019.11.003"> On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition</a>,</u>
+![alt text](http://melihcanyesilli.com/images/transfer_learning_turning_vertical.png)
