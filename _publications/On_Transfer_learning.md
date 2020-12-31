@@ -1,3 +1,4 @@
+![thumbnail](/images/transfer_learning_turning_vertical.png)
 ---
 title: "On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition"
 collection: publications
