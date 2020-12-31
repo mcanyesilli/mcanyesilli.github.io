@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: true
 ---
 
-You can find my articles on <a href="https://scholar.google.com/citations?user=dx7stuoAAAAJ&hl=en">my Google Scholar profile</a>.
+All articles can also be found on <a href="https://scholar.google.com/citations?user=dx7stuoAAAAJ&hl=en">my Google Scholar profile</a>.
 
 Journal Papers
 ====================
@@ -14,8 +14,8 @@ Journal Papers
 
 Preprints
 =========
-+ **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1905.08671"> Topological Feature Vectors for Chatter Detection in Turning Processes</a> *(Under Review)*
-+ **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1908.01678"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a> *(Under Review)*
++ **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1905.08671"> Topological Feature Vectors for Chatter Detection in Turning Processes</a>, 2019 *(Under Review)*
++ **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1908.01678"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a>, 2019 *(Under Review)*
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://arxiv.org/abs/2008.12691"> On Transfer Learning of Traditional Frequency and Time Domain Features in Turning</a>, MSEC 2020 *(Accepted)*
 
 Conference Papers
