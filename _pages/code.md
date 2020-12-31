@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Code and Data Repositories"
+title: "Code"
 permalink: /code/
 author_profile: true
 ---
