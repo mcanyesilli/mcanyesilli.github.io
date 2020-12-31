@@ -9,6 +9,5 @@ You can find my articles on <u><a href="https://scholar.google.com/citations?use
 
 Journal Publications
 ====================
-
-+ <u><a href="https://doi.org/10.1016/j.cirpj.2019.11.003"> On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition</a>,</u>
 ![alt text](http://melihcanyesilli.com/images/transfer_learning_turning_vertical.png)
++ <a href="https://doi.org/10.1016/j.cirpj.2019.11.003"> On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition</a>
