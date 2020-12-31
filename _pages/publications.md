@@ -14,3 +14,14 @@ author_profile: true
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
+
+Preprints
+=========
+---
+title: "On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition"
+collection: publications
+date: 2019-5-21
+venue: 'arXiv'
+---
+
+[Learn more](https://doi.org/10.1016/j.cirpj.2019.11.003)
