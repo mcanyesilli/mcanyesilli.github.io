@@ -1,12 +1,9 @@
 ---
 layout: archive
-title: "Code and Data Repositories"
+title: "Data Repositories"
 permalink: /code/
 author_profile: true
 ---
-
-Data Repositories
-=================
 
 + Khasawneh F.A., Otto A. and **Yesilli M.C.**, <a href="http://dx.doi.org/10.17632/hvm4wh3jzx.1"> Turning Dataset for Chatter Diagnosis Using
 Machine Learning</a>, Mendeley Data, 2019
