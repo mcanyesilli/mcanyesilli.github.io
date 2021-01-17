@@ -16,10 +16,10 @@ Preprints
 =========
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1905.08671"> Topological Feature Vectors for Chatter Detection in Turning Processes</a>, 2019 *(Under Review)*
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1908.01678"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a>, 2019 *(Under Review)*
-+ **Yesilli M.C.** and Khasawneh F.A., <a href="https://arxiv.org/abs/2008.12691"> On Transfer Learning of Traditional Frequency and Time Domain Features in Turning</a>, MSEC 2020 *(Accepted)*
 
 Conference Papers
 =================
++ **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/MSEC2020-8274"> On Transfer Learning of Traditional Frequency and Time Domain Features in Turning</a>, MSEC 2020
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/DETC2020-22597"> Data Driven Model Identification for a Chaotic Pendulum With Variable Interaction Potential</a>, IDETC 2020
 + **Yesilli M.C.**, Tymochko S., Khasawneh F.A., Much E., <a href="https://doi.org/10.1109/ICMLA.2019.00200"> Chatter Diagnosis in Milling Using Supervised Learning and Topological Features Vector</a>, ICML 2019
 + Tempelman J., Myers A., **Yesilli M.C.**, Khasawneh F.A., <a href="https://doi.org/10.1115/DETC2019-97673"> Experimental Investigations Into Broadband Vibration Absorption of Metastructures With Lattice Designs</a>, IDETC 2019
