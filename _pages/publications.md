@@ -14,6 +14,9 @@ Journal Papers
 
 Preprints
 =========
++ **Yesilli M.C.** and  Khasawneh F.A., Automated Surface Texture Analysis via Discrete Cosine Transform and Discrete Wavelet Transform, 2021 *(In Submission)*
++ **Yesilli M.C.** and  Khasawneh F.A., Data-driven and Automatic Surface Texture Analysis Using Persistent Homology, ICMLA2021 *(Under Review)*
++ **Yesilli M.C.**, Khasawneh F.A., Mann B.P., Transfer Learning for Autonomous Chatter Detection in Machining, 2021 *(Under Review)*
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1905.08671"> Topological Feature Vectors for Chatter Detection in Turning Processes</a>, 2019 *(Under Review)*
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://arxiv.org/abs/1908.01678"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a>, 2019 *(Under Review)*
 
