@@ -26,9 +26,9 @@ Conference Papers
 + **Yesilli M.C.** and  Khasawneh F.A.,  <a href="https://arxiv.org/abs/2110.10005"> Data-driven and Automatic Surface Texture Analysis Using Persistent Homology, ICMLA2021 *(Accepted)*
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/MSEC2020-8274"> On Transfer Learning of Traditional Frequency and Time Domain Features in Turning</a>, MSEC 2020
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/DETC2020-22597"> Data Driven Model Identification for a Chaotic Pendulum With Variable Interaction Potential</a>, IDETC 2020
-+ **Yesilli M.C.**, Tymochko S., Khasawneh F.A., Much E., <a href="https://doi.org/10.1109/ICMLA.2019.00200"> Chatter Diagnosis in Milling Using Supervised Learning and Topological Features Vector</a>, ICMLA 2019
++ **Yesilli M.C.**, Tymochko S., Khasawneh F.A., Munch E., <a href="https://doi.org/10.1109/ICMLA.2019.00200"> Chatter Diagnosis in Milling Using Supervised Learning and Topological Features Vector</a>, ICMLA 2019
 + Tempelman J., Myers A., **Yesilli M.C.**, Khasawneh F.A., <a href="https://doi.org/10.1115/DETC2019-97673"> Experimental Investigations Into Broadband Vibration Absorption of Metastructures With Lattice Designs</a>, IDETC 2019
 
 Posters
 =======
-+ Myers A., **Yesilli M.C.**, Tymochko S., Khasawneh F.A., Much E. <a href="https://openreview.net/pdf/0af524d299e512e7ddcc542eafefcdf153b7e595.pdf"> Teaspoon: A Comprehensive Python Package for Topological Signal Processing</a>, Topological Data Analysis and Beyond Workshop, NeurIPS 2020
++ Myers A., **Yesilli M.C.**, Tymochko S., Khasawneh F.A., and Munch E. <a href="https://openreview.net/pdf/0af524d299e512e7ddcc542eafefcdf153b7e595.pdf"> Teaspoon: A Comprehensive Python Package for Topological Signal Processing</a>, Topological Data Analysis and Beyond Workshop, NeurIPS 2020
