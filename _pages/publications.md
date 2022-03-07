@@ -17,7 +17,7 @@ Journal Papers
 Preprints
 =========
 + **Yesilli M.C.**, Chen J., Khasawneh F.A., and Guo Y., Automated Surface Texture Analysis via Discrete Cosine Transform and Discrete Wavelet Transform, 2021 *(Under Review)*
-+ **Yesilli M.C.**, Myers A., and Khasawneh F.A., On Time Series Methods for Chaos Detection: Application to Large Scale Double Pendulum Simulation, 2021 *(Under Review)*
++ Myers A., **Yesilli M.C.**, and Khasawneh F.A., On Time Series Methods for Chaos Detection: Application to Large Scale Double Pendulum Simulation, 2021 *(Under Review)*
 + **Yesilli M.C.**, Khasawneh F.A., and Mann B.P., Transfer Learning for Autonomous Chatter Detection in Machining, 2021 *(Under Review)*
 
 Conference Papers
