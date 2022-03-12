@@ -22,7 +22,7 @@ Preprints
 
 Conference Papers
 =================
-+ **Yesilli M.C.**, Chumley M., Chen J., Khasawneh F.A., and Guo Y., Exploring Surface Texture Quantification in Piezo Vibration Striking Treatment (PVST) Using Topological Measures, MSEC 2022 *(Accepted)*
++ **Yesilli M.C.**, Chumley M., Chen J., Khasawneh F.A., and Guo Y., Exploring Surface Texture Quantification in Piezo Vibration Striking Treatment (PVST) Using Topological Measures, MSEC 2022 *(Under Review)*
 + **Yesilli M.C.** and  Khasawneh F.A.,  <a href="https://doi.org/10.1109/ICMLA52953.2021.00219"> Data-driven and Automatic Surface Texture Analysis Using Persistent Homology</a>, ICMLA2021 
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/MSEC2020-8274"> On Transfer Learning of Traditional Frequency and Time Domain Features in Turning</a>, MSEC 2020
 + **Yesilli M.C.** and Khasawneh F.A., <a href="https://doi.org/10.1115/DETC2020-22597"> Data Driven Model Identification for a Chaotic Pendulum With Variable Interaction Potential</a>, IDETC 2020
