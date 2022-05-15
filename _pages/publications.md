@@ -9,16 +9,17 @@ All articles can also be found on <a href="https://scholar.google.com/citations?
 
 Journal Papers
 ====================
-+ **Yesilli M.C.**, Khasawneh F.A., and Otto A., <a href="https://arxiv.org/abs/1908.01678"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a>, 2022 *(Accepted for publication in Journal of Manufacturing Processes)*
++ **Yesilli M.C.**, Chen J., Khasawneh F.A., Guo Y., <a href="https://arxiv.org/abs/2204.05968"> Automated Surface Texture Analysis via Discrete Cosine Transform and Discrete Wavelet Transform</a>, 2022 *(Accepted for publication in Precision Engineering)*
++ **Yesilli M.C.**, Khasawneh F.A., and Otto A., <a href="https://doi.org/10.1016/j.jmapro.2022.03.009"> Chatter Detection in Turning Using Machine Learning and Similarity Measures of Time Series via Dynamic Time Warping</a>, 2022
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://doi.org/10.1007/s00170-021-08242-5"> Topological feature vectors for chatter detection in turning processes</a>, The International Journal of Advanced Manufacturing Technology, 2022
 + **Yesilli M.C.**, Khasawneh F.A., Otto A., <a href="https://doi.org/10.1016/j.cirpj.2019.11.003"> On transfer learning for chatter detection in turning using wavelet packet transform and ensemble empirical mode decomposition</a>, CIRP Journal of Manufacturing Science and Technology, 2019
 
 
 Preprints
 =========
-+ **Yesilli M.C.**, Chen J., Khasawneh F.A., and Guo Y., Automated Surface Texture Analysis via Discrete Cosine Transform and Discrete Wavelet Transform, 2021 *(Under Review)*
++ **Yesilli M.C.**, Khawarizmi P., Kwon P., Khasawneh F.A., Tool Wear Identification Using Persistent Homology and Machine Learning, 2022 *(In submission)*
++ **Yesilli M.C.**, Khasawneh F.A., and Mann B.P., <a href="https://arxiv.org/abs/2204.05400"> Transfer Learning for Autonomous Chatter Detection in Machining </a>, 2022  *(Under Review)*
 + Myers A., **Yesilli M.C.**, and Khasawneh F.A., On Time Series Methods for Chaos Detection: Application to Large Scale Double Pendulum Simulation, 2021 *(Under Review)*
-+ **Yesilli M.C.**, Khasawneh F.A., and Mann B.P., Transfer Learning for Autonomous Chatter Detection in Machining, 2021 *(Under Review)*
 
 Conference Papers
 =================
