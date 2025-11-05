@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Strava Race Prediction — Melih Can Yeşilli</title>
+  <style>
+    :root{ --bg:#0b1020; --text:#e9eefb; --muted:#aab7d4; --brand:#6aa1ff; --ring:rgba(106,161,255,.45) }
+    :root.light{ --bg:#ffffff; --text:#0e1630; --muted:#50607e; --brand:#275efe; --ring:rgba(39,94,254,.2) }
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial}
+    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .toggle{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:linear-gradient(180deg, var(--brand), #335eea);color:#fff;border:1px solid rgba(255,255,255,.08);font-weight:600}
+    .toggle:focus{outline:0} .toggle:focus-visible{box-shadow:0 0 0 6px var(--ring)}
+    .card{border-radius:16px;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01))}
+    .frame{display:block;width:100%;height:78vh;border:0}
+    /* Optional dark-overlay for non-dark apps: invert trick (remove if your app has dark mode) */
+    .darkify{filter: invert(1) hue-rotate(180deg) saturate(1.15) contrast(0.95) brightness(1.05)}
+    :root.light .darkify{filter:none}
+    .hint{color:var(--muted);margin:10px 0 0}
+    .controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px 0}
+    .input, select{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text);padding:10px 12px;border-radius:12px}
+    :root.light .input, :root.light select{border-color:rgba(0,0,0,.15)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
+    .stat{padding:14px}
+    .stat h3{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:600}
+    .stat .val{font-size:24px;font-weight:700}
+    .charts{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    canvas{background:transparent;border-radius:12px;display:block;width:100%;height:100%}
+    .chartbox{position:relative;height:280px}
+    .chartbox.small{height:220px}
+    .loading{opacity:.7}
+    .err{color:#ff6b6b}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <p style="margin:0"><a href="/">← Back to home</a></p>
+      <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme">🌙 Theme</button>
+    </div>
+
+    <h1 style="margin:0 0 8px">Strava Race Prediction</h1>
+    <p class="hint">Connect to your Strava prediction backend below. This page will pull the latest predictions and plot history vs. latest with daily deltas.</p>
+
+    <div class="card">
+      <div class="stat">
+        <div class="controls">
+          <label for="base" style="font-weight:600">Backend URL</label>
+          <input id="base" class="input" placeholder="https://airun.melihcanyesilli.com" value="https://airun.melihcanyesilli.com" style="min-width:320px" />
+
+          <label for="distance" style="font-weight:600">Distance</label>
+          <select id="distance">
+            <option value="marathon">Marathon (42.195k)</option>
+            <option value="half">Half Marathon</option>
+            <option value="10k">10K</option>
+            <option value="5k">5K</option>
+          </select>
+
+          <button id="load" class="toggle" type="button">🔄 Load</button>
+        </div>
+
+        <div class="grid">
+          <div class="card stat" id="latestCard">
+            <h3>Latest prediction</h3>
+            <div class="val" id="latestVal">—</div>
+            <div class="hint" id="latestDate">—</div>
+          </div>
+          <div class="card stat" id="deltaCard">
+            <h3>Change vs. previous</h3>
+            <div class="val" id="deltaVal">—</div>
+            <div class="hint" id="deltaHint">—</div>
+          </div>
+        </div>
+
+        <div class="charts">
+          <div class="card" style="padding:12px">
+            <h3 style="margin:0 0 8px;color:var(--muted)">History of predictions</h3>
+            <div class="chartbox">
+              <canvas id="histChart"></canvas>
+            </div>
+          </div>
+          <div class="card" style="padding:12px">
+            <h3 style="margin:0 0 8px;color:var(--muted)">Latest vs. previous</h3>
+            <div class="chartbox small">
+              <canvas id="deltaChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <p class="hint" id="status"></p>
+      </div>
+    </div>
+
+    <p class="hint">If you see a blank area, your app may be blocking embedding (X-Frame-Options / Content-Security-Policy) or needs CORS/config tweaks (see below).</p>
+  </div>
+
+  <script>
+    // Theme toggle (keeps in sync with main site if localStorage key is shared)
+    (function(){
+      const key='theme';
+      const root=document.documentElement;
+      const btn=document.getElementById('theme');
+      function apply(t){
+        if(t==='light'){ root.classList.add('light'); btn.setAttribute('aria-pressed','true'); btn.textContent='☀️ Theme'; }
+        else{ root.classList.remove('light'); btn.setAttribute('aria-pressed','false'); btn.textContent='🌙 Theme'; }
+      }
+      let saved=localStorage.getItem(key);
+      if(!saved){ saved=window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark'; }
+      apply(saved);
+      btn.addEventListener('click',()=>{ saved=(saved==='light')?'dark':'light'; localStorage.setItem(key,saved); apply(saved); });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    // --- Utilities ---
+    function pad(n){return n<10?"0"+n:String(n)}
+    function fmtHMS(sec){ if(sec==null||isNaN(sec)) return "—"; sec=Math.round(sec); const h=Math.floor(sec/3600); const m=Math.floor((sec%3600)/60); const s=sec%60; return `${h}:${pad(m)}:${pad(s)}` }
+    function parseDate(d){ return new Date(d) }
+
+    // Heuristic to find time-in-seconds value regardless of backend key naming
+    function pickSeconds(obj){
+      const keys=["time_s","finish_time_s","prediction_seconds","seconds","pred_s","value_s"]
+      for(const k of keys){ if(typeof obj[k]==='number') return obj[k] }
+      // fallbacks from HH:MM:SS
+      const strKeys=["time","finish_time","prediction"]
+      for(const k of strKeys){ if(typeof obj[k]==='string' && obj[k].includes(":")){
+        const parts=obj[k].split(":").map(Number); if(parts.length===3) return parts[0]*3600+parts[1]*60+parts[2]
+      }}
+      return null
+    }
+
+    // State
+    let histChart=null, deltaChart=null
+
+    async function fetchHistory(base, distance){
+      // Try to get historical data first
+      const histUrl = `${base}/api/predictions?distance=${distance}`
+      try{
+        const r = await fetch(histUrl, {credentials:'omit'})
+        if(!r.ok) throw new Error(r.status+" "+r.statusText)
+        const j = await r.json()
+        // API returns array of {date: "2025-10-18T00:00:00+00:00", time_s: 2534.5}
+        if(Array.isArray(j) && j.length){ return j }
+
+        // If no history, get current prediction and create a single data point
+        console.log('No historical data, fetching current prediction...')
+        const distanceMap = {
+          '5k': 5.0,
+          '10k': 10.0,
+          'half': 21.097,
+          'marathon': 42.195
+        }
+        const distKm = distanceMap[distance] || 10.0
+        const predUrl = `${base}/predict?distance_km=${distKm}`
+        const predResp = await fetch(predUrl, {credentials:'omit'})
+        if(!predResp.ok) throw new Error('No historical or current data available')
+        const pred = await predResp.json()
+        // Create a single historical entry from current prediction
+        return [{
+          date: new Date().toISOString(),
+          time_s: pred.prediction_s
+        }]
+      }catch(e){
+        throw new Error(`Failed to fetch from ${histUrl}: ${e.message}`)
+      }
+    }
+
+    function render(base, distance, rows){
+      // Normalize rows into {date: Date, sec: number}
+      const data = rows.map(r=>({ date: parseDate(r.date||r.day||r.as_of||r.created_at||r.timestamp), sec: pickSeconds(r) }))
+                       .filter(x=>x.date && !isNaN(x.date) && typeof x.sec==='number')
+                       .sort((a,b)=>a.date-b.date)
+      const status=document.getElementById('status')
+      if(!data.length){ status.innerHTML = '<span class="err">No usable data returned. Check your endpoint or CORS.</span>'; return }
+      const labels=data.map(d=>d.date.toISOString().slice(0,10))
+      const secs=data.map(d=>d.sec)
+
+      // Cards
+      const latest = data[data.length-1], prev = data[data.length-2]
+      document.getElementById('latestVal').textContent = fmtHMS(latest.sec)
+      document.getElementById('latestDate').textContent = `as of ${labels[labels.length-1]}`
+      if(prev){
+        const delta = latest.sec - prev.sec
+        const sign = delta===0?"±":(delta>0?"+":"−")
+        const abs = Math.abs(delta)
+        document.getElementById('deltaVal').textContent = `${sign}${fmtHMS(abs)}`
+        document.getElementById('deltaHint').textContent = `prev ${fmtHMS(prev.sec)} on ${labels[labels.length-2]}`
+      }else{
+        document.getElementById('deltaVal').textContent = '—'
+        document.getElementById('deltaHint').textContent = 'need at least two data points'
+      }
+
+      // Charts
+      const ctx1=document.getElementById('histChart').getContext('2d')
+      const ctx2=document.getElementById('deltaChart').getContext('2d')
+      if(histChart) histChart.destroy(); if(deltaChart) deltaChart.destroy();
+
+      histChart = new Chart(ctx1,{
+        type:'line',
+        data:{ labels, datasets:[{ label:`${distance} prediction`, data:secs, tension:.25, fill:false, pointRadius:3 }] },
+        options:{
+          responsive:true,
+          maintainAspectRatio:true,
+          aspectRatio:2,
+          scales:{ y:{ reverse:true, ticks:{ callback:v=>fmtHMS(v) } } },
+          plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label:(ctx)=>fmtHMS(ctx.parsed.y) } } }
+        }
+      })
+
+      const latestVals = prev? [prev.sec, latest.sec] : [latest.sec]
+      const latestLabs = prev? ['Previous','Latest'] : ['Latest']
+      deltaChart = new Chart(ctx2,{
+        type:'bar',
+        data:{ labels: latestLabs, datasets:[{ label:'Time (s)', data: latestVals }] },
+        options:{
+          responsive:true,
+          maintainAspectRatio:true,
+          aspectRatio:2,
+          scales:{ y:{ reverse:true, ticks:{ callback:v=>fmtHMS(v) } } },
+          plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label:(ctx)=>fmtHMS(ctx.parsed.y) } } }
+        }
+      })
+      status.textContent = `Loaded ${data.length} points from ${base}`
+    }
+
+    async function load(){
+      const base = document.getElementById('base').value.trim()
+      const distance=document.getElementById('distance').value
+      const status=document.getElementById('status')
+      if(!base){ status.innerHTML = '<span class="err">Enter your backend URL first.</span>'; return }
+      document.body.classList.add('loading')
+      status.textContent='Loading…'
+      try{ const rows = await fetchHistory(base, distance); render(base, distance, rows) }
+      catch(e){ status.innerHTML = `<span class="err">Failed: ${e.message}. Check CORS and the endpoint path.</span>` }
+      finally{ document.body.classList.remove('loading') }
+    }
+
+    // Persist base URL & auto-load
+    (function(){
+      const baseInput=document.getElementById('base')
+      const key='strava_pred_base'
+      const saved=localStorage.getItem(key)
+      if(saved) baseInput.value=saved
+      document.getElementById('load').addEventListener('click',()=>{ localStorage.setItem(key, baseInput.value.trim()); load() })
+      // Auto-load once on first visit if we have a saved base
+      if(saved) load()
+    })()
+  </script>
+</body>
+</html>
