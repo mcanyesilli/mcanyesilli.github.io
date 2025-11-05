@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//Users/melihyesilli/Desktop/Research/Repos/straca_race_prediction/**)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
